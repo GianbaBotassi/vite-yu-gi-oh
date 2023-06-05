@@ -1,9 +1,7 @@
 <script>
-
 export default {
     name: "AppFilter"
 }
-
 </script>
 
 <template>

@@ -1,8 +1,11 @@
 <script>
 import { store } from '../store.js';
-
+import SingleCard from './SingleCard.vue';
 
 export default {
+    components: {
+        SingleCard
+    },
     name: "CardList",
     data() {
         return {
@@ -14,39 +17,30 @@ export default {
 </script>
 
 <template>
-    <div id="lista">
-        <div id="card" v-for="card in store.CardArray" class="text-center">
-            <img :src="card.card_images[0].image_url" alt="">
-            <div class="name_card">{{ card.name }}</div>
-            <div>{{ card.archetype }}</div>
+    <section class="p-4">
+        <div id="founded" class="p-2 fw-bold">Found 20 cards</div>
+        <div id="card-list">
+            <SingleCard v-for="card in store.CardArray" :details="card" :key="card.id" />
         </div>
-    </div>
+    </section>
 </template>
 
 <style scoped lang="scss">
-@use 'styles/partials/mixins' as *;
-@use 'styles/general' as *;
+@use 'styles/partials/variables' as *;
 
-#lista {
-    @include flex-content;
-    flex-wrap: wrap;
-    gap: 10px;
 
-    #card {
-        flex-basis: calc((100%/4) - 10px);
-        gap: 25px 15px;
-        padding: 30px 0;
-        height: 300px;
+section {
+    background-color: white;
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+    #founded {
+        background-color: $dark-grey-bg;
+        color: $white-font;
     }
 
-    .name_card {
-        font-size: 0.8rem;
+    #card-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 }
 </style>
