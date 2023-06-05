@@ -12,7 +12,6 @@ export default {
             <img src="/img/logo.jpg" alt="">
         </div>
         <h1>Yu-Gi-Oh Api</h1>
-
     </header>
 </template>
 

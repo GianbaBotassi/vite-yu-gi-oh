@@ -1,5 +1,7 @@
 @use 'styles/partials/variables' as *;
 
+@import 'node_modules/bootstrap/scss/bootstrap'; //npm install bootstrap
+
 * {
     margin: 0;
     padding: 0;
