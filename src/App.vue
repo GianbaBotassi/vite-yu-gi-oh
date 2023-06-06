@@ -21,10 +21,10 @@ export default {
     }
   },
   methods: {           //metodo per chiamata axios
-    GetCards() {
+    getCards() {
       axios.get(store.apiURL).
         then((res) => {
-          store.CardArray = res.data.data;
+          store.cardArray = res.data.data;
           store.loading = false;
         }).catch((err) => {
           console.log(err.message)
@@ -32,20 +32,22 @@ export default {
     }
   },
   created() {
-    this.GetCards()
+    this.getCards()
   }
 }
 </script>
 
 <template>
   <AppLoader v-if="store.loading" />
-  <AppHeader />
-  <main>
-    <div class="cont py-2">
-      <AppFilter class="my-2" />
-      <CardList />
-    </div>
-  </main>
+  <div v-else>
+    <AppHeader />
+    <main>
+      <div class="cont py-2">
+        <AppFilter class="my-2" />
+        <CardList />
+      </div>
+    </main>
+  </div>
 </template>
 
 <style lang="scss">

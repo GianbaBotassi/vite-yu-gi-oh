@@ -18,9 +18,9 @@ export default {
 
 <template>
     <section class="p-4">
-        <div id="founded" class="p-2 fw-bold">Found 20 cards</div>
+        <div id="found" class="p-2 fw-bold">Found {{ store.cardArray.length }} cards</div>
         <div id="card-list">
-            <SingleCard v-for="card in store.CardArray" :details="card" :key="card.id" />
+            <SingleCard v-for="card in store.cardArray" :details="card" :key="card.id" />
         </div>
     </section>
 </template>
@@ -32,7 +32,7 @@ export default {
 section {
     background-color: white;
 
-    #founded {
+    #found {
         background-color: $dark-grey-bg;
         color: $white-font;
     }
