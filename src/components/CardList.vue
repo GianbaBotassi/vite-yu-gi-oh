@@ -18,7 +18,6 @@ export default {
 
 <template>
     <section class="p-4">
-        <div id="found" class="p-2 fw-bold">Found {{ store.cardArray.length }} cards</div>
         <div id="card-list">
             <SingleCard v-for="card in store.cardArray" :details="card" :key="card.id" />
         </div>
@@ -31,11 +30,6 @@ export default {
 
 section {
     background-color: white;
-
-    #found {
-        background-color: $dark-grey-bg;
-        color: $white-font;
-    }
 
     #card-list {
         display: flex;
