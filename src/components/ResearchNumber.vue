@@ -1,11 +1,24 @@
 <script>
+import { store } from '../store.js';
+
 export default {
-    name: "ResearchNumber"
+    name: "ResearchNumber",
+    data() {
+        return {
+            store
+        }
+    },
+    computed: {
+        numberCards() {
+            return store.cardArray.length
+        }
+    }
 }
 </script>
 
 <template>
-    <div class="p-2 fw-bold">Found 20 cards</div>
+    <div v-if="numberCards > 0" class="p-2 fw-bold">Found {{ numberCards }} cards</div>
+    <div v-else class="p-2 fw-bold">No results found for {{ store.selectOption }}</div>
 </template>
 
 

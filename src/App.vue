@@ -22,11 +22,11 @@ export default {
       store
     }
   },
-  methods: {           //metodo per chiamata axios
+  methods: {           //chiamata axios per popolare array con tutte le card
     getCards() {
-      store.apiURL = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0';  //reset del API url
+      store.apiURL = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';  //reset del API url
 
-      if (store.selectOption !== "All") {
+      if (store.selectOption !== "All") {       //condizione if nel caso il value non è All
         store.apiURL = `${store.apiURL}?archetype=${store.selectOption}`
       }
       console.log(store.apiURL);
@@ -39,10 +39,20 @@ export default {
         }).catch((err) => {
           console.log(err.message)
         })
+    },
+    getArchetype() {        //chiamata axios per popolare select options
+
+      axios.get(store.apiArchetypeURL).
+        then((res) => {
+          store.archetypeArray = res.data;
+        }).catch((err) => {
+          console.log(err.message)
+        })
     }
   },
   created() {
-    this.getCards()
+    this.getCards(),
+      this.getArchetype()
   }
 }
 </script>

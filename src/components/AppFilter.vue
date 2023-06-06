@@ -14,10 +14,9 @@ export default {
 <template>
     <select v-model="store.selectOption" @change="$emit('changeOption')" name="type">
         <option value="All" selected>All</option>
-        <option value="Noble Knight">Noble Knight</option>
-        <option value="Alien">Alien</option>
-        <option value="Pinni">Pinni</option>
-        <option value="Renata">Renata</option>
+        <option v-for="arch in store.archetypeArray" :key="arch.id">
+            {{ arch.archetype_name }}
+        </option>
     </select>
 </template>
 
