@@ -24,15 +24,16 @@ export default {
   },
   methods: {           //chiamata axios per popolare array con tutte le card
     getCards() {
-      store.apiURL = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';  //reset del API url
+
+      let archChoosenURL = store.apiURL;
 
       if (store.selectOption !== "All") {       //condizione if nel caso il value non è All
-        store.apiURL = `${store.apiURL}?archetype=${store.selectOption}`
+        archChoosenURL += `&archetype=${store.selectOption}`
       }
-      console.log(store.apiURL);
+      console.log(archChoosenURL);
       console.log(store.selectOption);
 
-      axios.get(store.apiURL).
+      axios.get(archChoosenURL).
         then((res) => {
           store.cardArray = res.data.data;
           store.loading = false;
